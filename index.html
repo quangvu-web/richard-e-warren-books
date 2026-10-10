@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Website Sách Richard E. Warren</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        color-scheme: light dark;
+        --bg:#fdfaf3;
+        --bg-soft:#f7efdd;
+        --surface:#ffffff;
+        --surface-2:#fffaf0;
+        --ink:#2b2118;
+        --ink-2:#5d4c3a;
+        --ink-3:#8a755e;
+        --line:#ead9bd;
+        --gold:#b97e10;
+        --gold-2:#e9b949;
+        --teal:#0e7c74;
+        --teal-2:#39b5a8;
+        --rose:#c2507a;
+        --rose-2:#eda4c0;
+        --sky:#2e6fb7;
+        --grad:linear-gradient(100deg,#f2c14e 0%,#f6a5c0 38%,#5ec8bc 72%,#7db2e8 100%);
+        --grad-soft:linear-gradient(135deg,#fdf3d8 0%,#fdeef4 45%,#e3f5f1 100%);
+        --shadow:0 10px 30px rgba(150,105,20,.14);
+        --shadow-lg:0 22px 50px rgba(150,105,20,.20);
+        --header-bg:rgba(253,250,243,.88);
+        --player-bg:rgba(255,252,246,.96);
+        --reader-light:#fffdf7;
+        --reader-sepia:#f6ead2;
+        --reader-cosmic:#fdf3e3;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#171310;
+          --bg-soft:#211a14;
+          --surface:#241c15;
+          --surface-2:#2b2118;
+          --ink:#f3e7d3;
+          --ink-2:#d8c3a5;
+          --ink-3:#a68d6c;
+          --line:#453723;
+          --gold:#e9b949;
+          --gold-2:#f2c14e;
+          --teal:#39b5a8;
+          --teal-2:#5ec8bc;
+          --rose:#eda4c0;
+          --rose-2:#f6a5c0;
+          --sky:#7db2e8;
+          --shadow:0 10px 30px rgba(0,0,0,.45);
+          --shadow-lg:0 22px 50px rgba(0,0,0,.55);
+          --header-bg:rgba(23,19,16,.88);
+          --player-bg:rgba(30,24,18,.97);
+          --grad-soft:linear-gradient(135deg,#2b2118 0%,#33202a 45%,#17302c 100%);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;background:var(--bg);color:var(--ink);
+        font-family:"Be Vietnam Pro",system-ui,sans-serif;
+        font-size:16px;line-height:1.6;
+        padding-bottom:0;
+      }
+      body.has-player{padding-bottom:118px}
+      @media (max-width:640px){ body.has-player{padding-bottom:132px} }
+      h1,h2,h3,.serif{font-family:"Playfair Display",Georgia,serif}
+      img{display:block;max-width:100%}
+      button{font-family:inherit;cursor:pointer}
+      a{color:var(--teal)}
+      :focus-visible{outline:3px solid var(--teal-2);outline-offset:2px;border-radius:6px}
+
+      /* ---------- header ---------- */
+      header.site{
+        position:sticky;top:0;z-index:60;
+        background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+        border-bottom:1px solid var(--line);
+      }
+      .header-in{
+        max-width:1180px;margin:0 auto;padding:10px 20px;
+        display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+      }
+      .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);margin-right:auto}
+      .brand .mark{
+        width:40px;height:40px;border-radius:12px;flex:none;
+        background:var(--grad);display:grid;place-items:center;color:#fff;
+        box-shadow:var(--shadow);
+      }
+      .brand .bname{font-family:"Playfair Display",serif;font-weight:700;font-size:1.06rem;line-height:1.15}
+      .brand .bsub{font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+      nav.main{display:flex;gap:4px;flex-wrap:wrap}
+      nav.main button{
+        background:none;border:0;color:var(--ink-2);font-size:.95rem;font-weight:500;
+        padding:8px 13px;border-radius:999px;
+      }
+      nav.main button:hover{color:var(--ink);background:var(--bg-soft)}
+      nav.main button.active{color:#fff;background:linear-gradient(100deg,var(--gold),var(--rose));}
+      .lang-toggle{
+        display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface);
+      }
+      .lang-toggle button{
+        border:0;background:transparent;padding:7px 14px;font-weight:600;font-size:.85rem;color:var(--ink-3);
+      }
+      .lang-toggle button.on{background:var(--grad);color:#fff}
+
+      /* ---------- layout ---------- */
+      .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+      section{padding:56px 0 8px}
+      .view{display:none}
+      .view.show{display:block;animation:fade .35s ease}
+      @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+      @media (prefers-reduced-motion: reduce){
+        .view.show{animation:none}
+        html{scroll-behavior:auto}
+      }
+
+      /* ---------- hero ---------- */
+      .hero{position:relative;border-radius:0 0 34px 34px;overflow:hidden;isolation:isolate}
+      .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+      .hero::after{
+        content:"";position:absolute;inset:0;z-index:-1;
+        background:linear-gradient(180deg,rgba(255,251,240,.30) 0%,rgba(255,251,240,.52) 55%,var(--bg) 100%);
+      }
+      @media (prefers-color-scheme: dark){
+        .hero::after{background:linear-gradient(180deg,rgba(23,19,16,.35) 0%,rgba(23,19,16,.55) 55%,var(--bg) 100%)}
+      }
+      .hero-in{max-width:1180px;margin:0 auto;padding:74px 20px 64px;text-align:center}
+      .hero h1{
+        font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.14;margin:0 auto 14px;max-width:20ch;font-weight:700;
+        text-wrap:balance;
+      }
+      .hero p.lede{max-width:62ch;margin:0 auto 26px;font-size:clamp(1rem,1.6vw,1.14rem);color:var(--ink-2)}
+      .hero-stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+      .hero-stats .stat{
+        background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 18px;box-shadow:var(--shadow);
+        font-size:.9rem;color:var(--ink-2);
+      }
+      .hero-stats .stat b{color:var(--ink);font-size:1.05rem}
+
+      .btn{
+        display:inline-flex;align-items:center;gap:9px;border:0;border-radius:999px;
+        padding:12px 24px;font-weight:600;font-size:.98rem;text-decoration:none;
+        transition:transform .18s ease, box-shadow .18s ease;
+      }
+      .btn:hover{transform:translateY(-2px)}
+      .btn-gold{background:linear-gradient(100deg,var(--gold-2),#f08bb4);color:#3a2703;box-shadow:var(--shadow)}
+      .btn-teal{background:linear-gradient(100deg,var(--teal),var(--teal-2));color:#fff;box-shadow:var(--shadow)}
+      .btn-ghost{background:var(--surface);color:var(--ink);border:1.5px solid var(--line)}
+      .btn-sm{padding:9px 18px;font-size:.9rem}
+      .btn svg{flex:none}
+
+      /* ---------- section heads ---------- */
+      .sec-head{max-width:720px;margin-bottom:26px}
+      .sec-head h2{font-size:clamp(1.55rem,3vw,2.15rem);margin:0 0 8px;line-height:1.2}
+      .sec-head p{margin:0;color:var(--ink-2)}
+
+      /* ---------- book cards ---------- */
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:26px}
+      .card{
+        background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+        box-shadow:var(--shadow);display:flex;flex-direction:column;text-align:left;padding:0;width:100%;
+        transition:transform .22s ease, box-shadow .22s ease;
+      }
+      button.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 0 0 3px rgba(233,185,73,.35),0 0 34px rgba(246,165,192,.35)}
+      .card .cover{aspect-ratio:2/3;overflow:hidden;background:var(--bg-soft);position:relative}
+      .card .cover img{width:100%;height:100%;object-fit:cover}
+      .card .cover.art{display:grid;place-items:end center}
+      .card .cover.art img{position:absolute;inset:0}
+      .card .cover .art-title{
+        position:relative;z-index:1;width:100%;text-align:center;padding:14px 12px 16px;color:#fff;
+        background:linear-gradient(180deg,transparent,rgba(20,30,20,.72));
+        font-family:"Playfair Display",serif;
+      }
+      .card .cover .art-title .t{display:block;font-size:1.12rem;font-weight:700;line-height:1.25}
+      .card .cover .art-title .s{display:block;font-size:.78rem;opacity:.92;margin-top:3px}
+      .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+      .card h3{margin:0;font-size:1.13rem;line-height:1.3}
+      .card .sub{font-size:.86rem;color:var(--gold);font-weight:600}
+      .card .desc{font-size:.88rem;color:var(--ink-2);margin:0;flex:1}
+      .tagrow{display:flex;gap:6px;flex-wrap:wrap}
+      .tag{
+        font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;
+        background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--line);
+      }
+      .card .meta{font-size:.8rem;color:var(--ink-3);display:flex;gap:12px;flex-wrap:wrap}
+
+      /* ---------- toolbar / filters ---------- */
+      .toolbar{
+        display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;
+      }
+      .search{
+        flex:1 1 260px;display:flex;align-items:center;gap:9px;background:var(--surface);
+        border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;
+      }
+      .search svg{color:var(--ink-3);flex:none}
+      .search input{border:0;background:none;outline:none;font:inherit;color:var(--ink);width:100%}
+      .chips{display:flex;gap:8px;flex-wrap:wrap}
+      .chip{
+        border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);
+        border-radius:999px;padding:8px 15px;font-size:.87rem;font-weight:500;
+      }
+      .chip.on{background:var(--grad);color:#fff;border-color:transparent}
+      .empty{
+        border:1.5px dashed var(--line);border-radius:20px;padding:44px 20px;text-align:center;color:var(--ink-2);
+        background:var(--surface-2);
+      }
+
+      /* ---------- timeline ---------- */
+      .timeline{position:relative;margin:8px 0 0;padding-left:26px}
+      .timeline::before{
+        content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--grad);
+      }
+      .tl-item{position:relative;padding:0 0 28px 14px}
+      .tl-item::before{
+        content:"";position:absolute;left:-25px;top:7px;width:13px;height:13px;border-radius:50%;
+        background:var(--surface);border:3.5px solid var(--gold-2);box-shadow:0 0 0 4px var(--bg);
+      }
+      .tl-era{font-size:.8rem;font-weight:700;letter-spacing:.05em;color:var(--teal);text-transform:uppercase}
+      .tl-item h3{margin:3px 0 5px;font-size:1.25rem}
+      .tl-item p{margin:0;color:var(--ink-2);max-width:66ch}
+      .tl-item button.linkish{
+        background:none;border:0;padding:0;color:var(--teal);font-weight:600;font-size:.92rem;margin-top:7px;
+      }
+
+      /* ---------- about ---------- */
+      .about{
+        background:var(--grad-soft);border:1px solid var(--line);border-radius:26px;padding:34px;
+        display:grid;grid-template-columns:120px 1fr;gap:26px;align-items:start;
+      }
+      .about .avatar{
+        width:120px;height:120px;border-radius:24px;background:var(--grad);display:grid;place-items:center;
+        color:#fff;box-shadow:var(--shadow);
+      }
+      .about h2{margin:0 0 10px;font-size:1.7rem}
+      .about p{margin:0 0 10px;color:var(--ink-2);max-width:70ch}
+      @media (max-width:640px){ .about{grid-template-columns:1fr;padding:26px} .about .avatar{width:84px;height:84px;border-radius:18px} }
+
+      /* ---------- detail ---------- */
+      .backlink{
+        background:none;border:0;color:var(--teal);font-weight:600;font-size:.95rem;padding:6px 0;
+        display:inline-flex;gap:7px;align-items:center;
+      }
+      .detail{display:grid;grid-template-columns:290px 1fr;gap:38px;align-items:start;padding-top:14px}
+      @media (max-width:760px){ .detail{grid-template-columns:1fr} .detail .dcover{max-width:250px} }
+      .dcover{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+      .dcover img{width:100%}
+      .dcover.art img{aspect-ratio:1/2;display:block}
+      .dcover .art-title{
+        position:absolute;left:0;right:0;bottom:0;text-align:center;padding:34px 14px 18px;color:#fff;
+        background:linear-gradient(180deg,transparent,rgba(20,30,20,.75));font-family:"Playfair Display",serif;
+      }
+      .dcover .art-title .t{display:block;font-size:1.3rem;font-weight:700}
+      .dcover .art-title .s{display:block;font-size:.85rem;opacity:.92}
+      .detail h1{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:2px 0 4px;line-height:1.18}
+      .detail .dsub{color:var(--gold);font-weight:600;font-size:1.02rem;margin-bottom:12px}
+      .detail .ddesc{color:var(--ink-2);max-width:68ch}
+      .facts{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 22px}
+      .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+      .chapter-list{margin-top:26px}
+      .chapter-list h3{font-size:1.25rem;margin:0 0 12px}
+      .ch-row{
+        display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+        background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:10px;
+        transition:box-shadow .18s ease, transform .18s ease;
+      }
+      .ch-row:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+      .ch-num{
+        width:38px;height:38px;flex:none;border-radius:50%;background:var(--bg-soft);border:1px solid var(--line);
+        display:grid;place-items:center;font-weight:700;color:var(--gold);font-size:.92rem;
+      }
+      .ch-row .ch-t{flex:1}
+      .ch-row .ch-t b{display:block;font-size:.99rem;color:var(--ink)}
+      .ch-row .ch-t span{font-size:.82rem;color:var(--ink-3)}
+      .ch-row .ch-acts{display:flex;gap:8px}
+      .icon-btn{
+        width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);
+        display:grid;place-items:center;color:var(--teal);
+      }
+      .icon-btn:hover{border-color:var(--teal-2);background:var(--bg-soft)}
+      .icon-btn.solid{background:linear-gradient(100deg,var(--teal),var(--teal-2));color:#fff;border-color:transparent}
+
+      /* ---------- reader ---------- */
+      .reader-bar{
+        position:sticky;top:64px;z-index:40;background:var(--header-bg);backdrop-filter:blur(12px);
+        border:1px solid var(--line);border-radius:18px;padding:10px 14px;margin:14px 0 22px;
+        display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow);
+      }
+      .reader-bar .rb-group{display:flex;gap:6px;align-items:center}
+      .reader-bar .rb-label{font-size:.78rem;color:var(--ink-3);font-weight:600;margin-right:2px}
+      .rb-btn{
+        border:1.5px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;
+        padding:7px 11px;font-size:.86rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;
+      }
+      .rb-btn.on{background:var(--grad);color:#fff;border-color:transparent}
+      .rb-btn[aria-pressed="true"]{background:var(--grad);color:#fff;border-color:transparent}
+      .reader-sheet{
+        border-radius:24px;padding:clamp(24px,5vw,54px);box-shadow:var(--shadow);border:1px solid var(--line);
+        transition:background .25s ease,color .25s ease;
+      }
+      .reader-sheet.theme-light{background:var(--reader-light);color:#332619}
+      .reader-sheet.theme-sepia{background:var(--reader-sepia);color:#4a3421}
+      .reader-sheet.theme-cosmic{
+        background:linear-gradient(160deg,#fff7e0 0%,#fdeef4 52%,#e0f4f0 100%);color:#3a2a33;
+      }
+      @media (prefers-color-scheme: dark){
+        .reader-sheet.theme-light{background:#efe6d4;color:#332619}
+        .reader-sheet.theme-sepia{background:#e8d9bd;color:#43301d}
+        .reader-sheet.theme-cosmic{background:linear-gradient(160deg,#3a2c14 0%,#3a2030 52%,#14332e 100%);color:#f5e8d8}
+      }
+      .reader-sheet .r-book{font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);text-align:center}
+      .reader-sheet h2{text-align:center;font-size:clamp(1.5rem,3vw,2.1rem);margin:8px 0 6px}
+      .reader-sheet .r-ch{text-align:center;color:var(--ink-3);font-size:.92rem;margin-bottom:26px}
+      .reader-sheet .paras{max-width:66ch;margin:0 auto}
+      .reader-sheet p{margin:0 0 1.15em;line-height:1.85;text-align:justify;hyphens:auto}
+      .reader-sheet p:first-of-type::first-letter{
+        font-family:"Playfair Display",serif;font-size:2.6em;float:left;line-height:.92;padding:4px 10px 0 0;color:var(--gold);
+      }
+      .reader-nav{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
+      .note-box{margin-top:22px}
+      .note-box label{font-weight:600;font-size:.92rem;display:block;margin-bottom:8px}
+      .note-box textarea{
+        width:100%;min-height:88px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);
+        color:var(--ink);font:inherit;padding:12px 14px;resize:vertical;
+      }
+      .note-hint{font-size:.8rem;color:var(--ink-3);margin-top:6px}
+
+      /* ---------- bookmarks ---------- */
+      .bm-row{
+        display:flex;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);
+        border-radius:16px;padding:14px 18px;margin-bottom:10px;width:100%;text-align:left;
+      }
+      .bm-row .bm-t{flex:1}
+      .bm-row .bm-t b{display:block}
+      .bm-row .bm-t span{font-size:.84rem;color:var(--ink-3)}
+
+      /* ---------- player ---------- */
+      #player{
+        position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--player-bg);
+        backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+        border-top:1px solid var(--line);box-shadow:0 -12px 34px rgba(120,80,10,.16);
+        transform:translateY(110%);transition:transform .3s ease;
+      }
+      #player.show{transform:none}
+      .player-in{max-width:1180px;margin:0 auto;padding:12px 20px 14px}
+      .player-top{display:flex;align-items:center;gap:14px}
+      .player-cover{width:52px;height:72px;border-radius:8px;object-fit:cover;flex:none;box-shadow:var(--shadow)}
+      .player-meta{flex:1;min-width:0}
+      .player-meta b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.97rem}
+      .player-meta span{display:block;font-size:.82rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .player-ctrl{display:flex;align-items:center;gap:8px}
+      .p-btn{
+        width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);
+        display:grid;place-items:center;color:var(--ink);
+      }
+      .p-btn.main{width:52px;height:52px;background:var(--grad);color:#fff;border-color:transparent;box-shadow:var(--shadow)}
+      .p-btn.small{width:36px;height:36px;font-size:.78rem;font-weight:700;color:var(--ink-2)}
+      .player-progress{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:.78rem;color:var(--ink-3)}
+      .player-progress input[type=range]{flex:1;accent-color:var(--gold);height:4px}
+      @media (max-width:640px){
+        .player-cover{display:none}
+        .p-btn{width:38px;height:38px}
+        .p-btn.main{width:48px;height:48px}
+      }
+
+      footer.site{padding:44px 0 30px;color:var(--ink-3);font-size:.88rem}
+      footer.site .f-in{border-top:1px solid var(--line);padding-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+      .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="header-in">
+        <a class="brand" href="#" data-nav="home" aria-label="Richard E. Warren">
+          <span class="mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </span>
+          <span>
+            <span class="bname">Richard E. Warren</span><br />
+            <span class="bsub" data-i18n="brandSub">Thư viện Ánh Sáng Vũ Trụ</span>
+          </span>
+        </a>
+        <nav class="main" aria-label="Main">
+          <button type="button" data-nav="home" data-i18n="navHome">Trang chủ</button>
+          <button type="button" data-nav="library" data-i18n="navLibrary">Thư viện</button>
+          <button type="button" data-nav="bookmarks" data-i18n="navBookmarks">Dấu trang</button>
+        </nav>
+        <div class="lang-toggle" role="group" aria-label="Language / Ngôn ngữ">
+          <button type="button" id="langVi">VI</button>
+          <button type="button" id="langEn">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================= HOME ================= -->
+      <div class="view" id="view-home">
+        <div class="hero">
+          <img class="bg" src="assets/hero.jpg" alt="" />
+          <div class="hero-in">
+            <h1 data-i18n="heroTitle">Hành trình qua những thế giới của ánh sáng</h1>
+            <p class="lede" data-i18n="heroLede">Chào mừng bạn đến với thư viện của Richard E. Warren — những câu chuyện về sự thức tỉnh sau cái chết, những thiên thần nơi chiến trường, khu vườn đầu tiên của nhân loại và buổi bình minh của loài người. Đọc trực tuyến hoặc lắng nghe từng chương, bằng tiếng Anh và tiếng Việt.</p>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+              <button type="button" class="btn btn-gold" data-nav="library">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                <span data-i18n="heroBrowse">Khám phá thư viện</span>
+              </button>
+              <button type="button" class="btn btn-ghost" id="heroListen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/></svg>
+                <span data-i18n="heroListen">Nghe chương đầu tiên</span>
+              </button>
+            </div>
+            <div class="hero-stats">
+              <span class="stat"><b>5</b> · <span data-i18n="statBooks">tác phẩm</span></span>
+              <span class="stat"><b>10</b> · <span data-i18n="statChapters">chương đọc &amp; nghe</span></span>
+              <span class="stat"><b>2</b> · <span data-i18n="statLangs">ngôn ngữ: Anh · Việt</span></span>
+            </div>
+          </div>
+        </div>
+
+        <section class="wrap">
+          <div class="sec-head">
+            <h2 data-i18n="featuredTitle">Tác phẩm nổi bật</h2>
+            <p data-i18n="featuredSub">Năm tác phẩm đưa người đọc đi từ buổi bình minh của nhân loại đến những thế giới phía sau cái chết.</p>
+          </div>
+          <div class="grid" id="featuredGrid"></div>
+        </section>
+
+        <section class="wrap">
+          <div class="sec-head">
+            <h2 data-i18n="timelineTitle">Dòng thời gian vũ trụ</h2>
+            <p data-i18n="timelineSub">Đọc theo thứ tự của câu chuyện vĩ đại: từ con người đầu tiên đến hành trình vĩnh hằng.</p>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <section class="wrap" style="padding-bottom:64px">
+          <div class="about">
+            <div class="avatar" aria-hidden="true">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <div>
+              <h2 data-i18n="aboutTitle">Về tác giả</h2>
+              <p data-i18n="aboutP1">Richard E. Warren là nhà văn người Mỹ, tác giả của nhiều tiểu thuyết lấy cảm hứng từ vũ trụ luận của The Urantia Book. Các tác phẩm của ông — do Cosmic Creations phát hành — đưa những khái niệm vũ trụ bao la vào những câu chuyện gần gũi, nhân văn: một người lính trẻ được thiên thần che chở, một cặp đôi đầu tiên học cách làm người, và một linh hồn thức dậy trong ánh sáng của thế giới bên kia.</p>
+              <p data-i18n="aboutP2">Trang này giới thiệu năm tác phẩm tiêu biểu của ông, kèm các chương mẫu để đọc trực tuyến và nghe giọng đọc bằng cả tiếng Anh lẫn tiếng Việt.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= LIBRARY ================= -->
+      <div class="view" id="view-library">
+        <section class="wrap" style="padding-top:38px;padding-bottom:64px">
+          <div class="sec-head">
+            <h2 data-i18n="libraryTitle">Thư viện sách</h2>
+            <p data-i18n="librarySub">Tìm kiếm theo tựa sách, chủ đề hoặc nội dung chương — bằng tiếng Anh hoặc tiếng Việt.</p>
+          </div>
+          <div class="toolbar">
+            <label class="search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="search" id="searchInput" data-i18n-ph="searchPh" placeholder="Tìm sách hoặc chương…" />
+            </label>
+            <div class="chips" id="themeChips"></div>
+          </div>
+          <div class="grid" id="libraryGrid"></div>
+          <div class="empty" id="libraryEmpty" hidden>
+            <p style="margin:0 0 6px;font-weight:600" data-i18n="noResults">Không tìm thấy kết quả phù hợp.</p>
+            <p style="margin:0" data-i18n="noResultsSub">Thử từ khóa khác hoặc xóa bộ lọc chủ đề.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= BOOKMARKS ================= -->
+      <div class="view" id="view-bookmarks">
+        <section class="wrap" style="padding-top:38px;padding-bottom:64px">
+          <div class="sec-head">
+            <h2 data-i18n="bmTitle">Dấu trang của tôi</h2>
+            <p data-i18n="bmSub">Các chương bạn đã đánh dấu trong trình đọc. Dấu trang được lưu trong phiên làm việc này.</p>
+          </div>
+          <div id="bmList"></div>
+          <div class="empty" id="bmEmpty">
+            <p style="margin:0 0 6px;font-weight:600" data-i18n="bmEmpty">Chưa có dấu trang nào.</p>
+            <p style="margin:0" data-i18n="bmEmptySub">Mở một chương và nhấn nút “Đánh dấu trang” để lưu lại vị trí đọc.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= DETAIL ================= -->
+      <div class="view" id="view-detail">
+        <div class="wrap" style="padding-top:22px;padding-bottom:64px">
+          <button type="button" class="backlink" data-nav="library">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span data-i18n="backLibrary">Quay lại thư viện</span>
+          </button>
+          <div id="detailBody"></div>
+        </div>
+      </div>
+
+      <!-- ================= READER ================= -->
+      <div class="view" id="view-reader">
+        <div class="wrap" style="padding-top:22px;padding-bottom:64px;max-width:920px">
+          <button type="button" class="backlink" id="readerBack">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span data-i18n="backBook">Quay lại trang sách</span>
+          </button>
+          <div class="reader-bar" role="toolbar" aria-label="Reader settings">
+            <div class="rb-group">
+              <span class="rb-label" data-i18n="rbFont">Cỡ chữ</span>
+              <button type="button" class="rb-btn" id="fontMinus" aria-label="Decrease font size">A−</button>
+              <button type="button" class="rb-btn" id="fontPlus" aria-label="Increase font size">A+</button>
+            </div>
+            <div class="rb-group">
+              <span class="rb-label" data-i18n="rbTheme">Nền</span>
+              <button type="button" class="rb-btn theme-btn" data-theme="light" data-i18n="themeLight">Sáng</button>
+              <button type="button" class="rb-btn theme-btn" data-theme="sepia" data-i18n="themeSepia">Giấy cổ</button>
+              <button type="button" class="rb-btn theme-btn" data-theme="cosmic" data-i18n="themeCosmic">Hào quang</button>
+            </div>
+            <div class="rb-group" style="margin-left:auto">
+              <button type="button" class="rb-btn" id="readerListen">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5.5v13l11-6.5z"/></svg>
+                <span data-i18n="listen">Nghe</span>
+              </button>
+              <button type="button" class="rb-btn" id="readerBookmark" aria-pressed="false">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                <span data-i18n="bookmark">Đánh dấu trang</span>
+              </button>
+            </div>
+          </div>
+          <article class="reader-sheet theme-light" id="readerSheet">
+            <div class="r-book" id="rBook"></div>
+            <h2 id="rTitle"></h2>
+            <div class="r-ch" id="rCh"></div>
+            <div class="paras" id="rParas"></div>
+            <div class="note-box">
+              <label for="noteArea" data-i18n="noteLabel">Ghi chú của tôi cho chương này</label>
+              <textarea id="noteArea" data-i18n-ph="notePh" placeholder="Viết suy nghĩ, câu trích dẫn bạn tâm đắc…"></textarea>
+              <div class="note-hint" data-i18n="noteHint">Ghi chú chỉ lưu trong phiên làm việc này.</div>
+            </div>
+            <div class="reader-nav">
+              <button type="button" class="btn btn-ghost btn-sm" id="prevCh">← <span data-i18n="prevCh">Chương trước</span></button>
+              <button type="button" class="btn btn-ghost btn-sm" id="nextCh"><span data-i18n="nextCh">Chương sau</span> →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap f-in">
+        <span data-i18n="footerNote">Thư viện giới thiệu các tác phẩm của Richard E. Warren · Các chương mẫu kèm giọng đọc tiếng Anh và tiếng Việt.</span>
+        <span>Richard E. Warren · Cosmic Creations</span>
+      </div>
+    </footer>
+
+    <!-- ================= MINI PLAYER ================= -->
+    <div id="player" role="region" aria-label="Audio player">
+      <div class="player-in">
+        <div class="player-top">
+          <img class="player-cover" id="pCover" src="assets/cover-resurrection.jpg" alt="Resurrection Hall" />
+          <div class="player-meta">
+            <b id="pTitle">Resurrection Hall — Sự Thức Tỉnh</b>
+            <span id="pSub">Chương 1 · Giọng đọc tiếng Việt</span>
+          </div>
+          <div class="player-ctrl">
+            <button type="button" class="p-btn" id="pBack" aria-label="Back 15 seconds">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M11.5 9.5 10 11l1.5 1.5L10 14" opacity="0"/><text x="8.4" y="15.5" font-size="7.5" fill="currentColor" stroke="none" font-weight="700">15</text></svg>
+            </button>
+            <button type="button" class="p-btn main" id="pPlay" aria-label="Play or pause">
+              <svg id="pPlayIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </button>
+            <button type="button" class="p-btn" id="pFwd" aria-label="Forward 15 seconds">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/><text x="8.4" y="15.5" font-size="7.5" fill="currentColor" stroke="none" font-weight="700">15</text></svg>
+            </button>
+            <button type="button" class="p-btn small" id="pSpeed" aria-label="Playback speed">1×</button>
+            <button type="button" class="p-btn small" id="pClose" aria-label="Close player">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="player-progress">
+          <span id="pCur">0:00</span>
+          <input type="range" id="pSeek" min="0" max="100" step="0.1" value="0" aria-label="Seek" />
+          <span id="pDur">0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <audio id="audioEl" preload="metadata"></audio>
+
+    <script>
+    "use strict";
+    /* ================= i18n ================= */
+    var I18N = {
+      vi: {
+        brandSub: "Thư viện Ánh Sáng Vũ Trụ",
+        navHome: "Trang chủ", navLibrary: "Thư viện", navBookmarks: "Dấu trang",
+        heroTitle: "Hành trình qua những thế giới của ánh sáng",
+        heroLede: "Chào mừng bạn đến với thư viện của Richard E. Warren — những câu chuyện về sự thức tỉnh sau cái chết, những thiên thần nơi chiến trường, khu vườn đầu tiên của nhân loại và buổi bình minh của loài người. Đọc trực tuyến hoặc lắng nghe từng chương, bằng tiếng Anh và tiếng Việt.",
+        heroBrowse: "Khám phá thư viện", heroListen: "Nghe chương đầu tiên",
+        statBooks: "tác phẩm", statChapters: "chương đọc & nghe", statLangs: "ngôn ngữ: Anh · Việt",
+        featuredTitle: "Tác phẩm nổi bật",
+        featuredSub: "Năm tác phẩm đưa người đọc đi từ buổi bình minh của nhân loại đến những thế giới phía sau cái chết.",
+        timelineTitle: "Dòng thời gian vũ trụ",
+        timelineSub: "Đọc theo thứ tự của câu chuyện vĩ đại: từ con người đầu tiên đến hành trình vĩnh hằng.",
+        viewBook: "Xem sách",
+        aboutTitle: "Về tác giả",
+        aboutP1: "Richard E. Warren là nhà văn người Mỹ, tác giả của nhiều tiểu thuyết lấy cảm hứng từ vũ trụ luận của The Urantia Book. Các tác phẩm của ông — do Cosmic Creations phát hành — đưa những khái niệm vũ trụ bao la vào những câu chuyện gần gũi, nhân văn: một người lính trẻ được thiên thần che chở, một cặp đôi đầu tiên học cách làm người, và một linh hồn thức dậy trong ánh sáng của thế giới bên kia.",
+        aboutP2: "Trang này giới thiệu năm tác phẩm tiêu biểu của ông, kèm các chương mẫu để đọc trực tuyến và nghe giọng đọc bằng cả tiếng Anh lẫn tiếng Việt.",
+        libraryTitle: "Thư viện sách",
+        librarySub: "Tìm kiếm theo tựa sách, chủ đề hoặc nội dung chương — bằng tiếng Anh hoặc tiếng Việt.",
+        searchPh: "Tìm sách hoặc chương…",
+        themeAll: "Tất cả",
+        noResults: "Không tìm thấy kết quả phù hợp.",
+        noResultsSub: "Thử từ khóa khác hoặc xóa bộ lọc chủ đề.",
+        backLibrary: "Quay lại thư viện", backBook: "Quay lại trang sách",
+        read: "Đọc sách", listen: "Nghe audio", chapters: "Các chương mẫu",
+        chapter: "Chương", sampleNote: "Trích đoạn giới thiệu kèm giọng đọc song ngữ.",
+        buyPrint: "Mua bản in tại Cosmic Creations",
+        publisher: "Nhà xuất bản", era: "Thời đại câu chuyện", themes: "Chủ đề",
+        rbFont: "Cỡ chữ", rbTheme: "Nền",
+        themeLight: "Sáng", themeSepia: "Giấy cổ", themeCosmic: "Hào quang",
+        bookmark: "Đánh dấu trang", bookmarked: "Đã đánh dấu",
+        noteLabel: "Ghi chú của tôi cho chương này",
+        notePh: "Viết suy nghĩ, câu trích dẫn bạn tâm đắc…",
+        noteHint: "Ghi chú chỉ lưu trong phiên làm việc này.",
+        prevCh: "Chương trước", nextCh: "Chương sau",
+        bmTitle: "Dấu trang của tôi",
+        bmSub: "Các chương bạn đã đánh dấu trong trình đọc. Dấu trang được lưu trong phiên làm việc này.",
+        bmEmpty: "Chưa có dấu trang nào.",
+        bmEmptySub: "Mở một chương và nhấn nút “Đánh dấu trang” để lưu lại vị trí đọc.",
+        openChapter: "Mở chương",
+        footerNote: "Thư viện giới thiệu các tác phẩm của Richard E. Warren · Các chương mẫu kèm giọng đọc tiếng Anh và tiếng Việt.",
+        playing: "Đang phát", byAuthor: "của Richard E. Warren"
+      },
+      en: {
+        brandSub: "Library of Cosmic Light",
+        navHome: "Home", navLibrary: "Library", navBookmarks: "Bookmarks",
+        heroTitle: "A journey through worlds of light",
+        heroLede: "Welcome to the library of Richard E. Warren — stories of awakening beyond death, guardian angels on a battlefield, humanity's first garden, and the dawn of the human race. Read online or listen chapter by chapter, in English and Vietnamese.",
+        heroBrowse: "Browse the library", heroListen: "Listen to the first chapter",
+        statBooks: "books", statChapters: "read & listen chapters", statLangs: "languages: EN · VI",
+        featuredTitle: "Featured works",
+        featuredSub: "Five books that carry the reader from the dawn of humankind to the worlds beyond death.",
+        timelineTitle: "The cosmic timeline",
+        timelineSub: "Read in the order of the grand story: from the first humans to the eternal journey.",
+        viewBook: "View book",
+        aboutTitle: "About the author",
+        aboutP1: "Richard E. Warren is an American author whose novels draw on the cosmology of The Urantia Book. Published by Cosmic Creations, his books bring vast cosmic ideas into warm, human stories: a young soldier watched over by angels, a first couple learning what it means to be human, and a soul awakening in the light of the world beyond.",
+        aboutP2: "This site presents five of his signature works, with sample chapters to read online and listen to in both English and Vietnamese.",
+        libraryTitle: "The library",
+        librarySub: "Search by title, theme, or chapter content — in English or Vietnamese.",
+        searchPh: "Search books or chapters…",
+        themeAll: "All",
+        noResults: "No matching results.",
+        noResultsSub: "Try another keyword or clear the theme filter.",
+        backLibrary: "Back to library", backBook: "Back to book page",
+        read: "Read text", listen: "Listen audio", chapters: "Sample chapters",
+        chapter: "Chapter", sampleNote: "Introductory excerpts with bilingual narration.",
+        buyPrint: "Buy the print edition at Cosmic Creations",
+        publisher: "Publisher", era: "Story era", themes: "Themes",
+        rbFont: "Font size", rbTheme: "Background",
+        themeLight: "Light", themeSepia: "Sepia", themeCosmic: "Cosmic Glow",
+        bookmark: "Bookmark", bookmarked: "Bookmarked",
+        noteLabel: "My note for this chapter",
+        notePh: "Write your thoughts, a favorite line…",
+        noteHint: "Notes are kept for this session only.",
+        prevCh: "Previous chapter", nextCh: "Next chapter",
+        bmTitle: "My bookmarks",
+        bmSub: "Chapters you bookmarked in the reader. Bookmarks are kept for this session.",
+        bmEmpty: "No bookmarks yet.",
+        bmEmptySub: "Open a chapter and press “Bookmark” to save your place.",
+        openChapter: "Open chapter",
+        footerNote: "A library of the works of Richard E. Warren · Sample chapters with English and Vietnamese narration.",
+        playing: "Now playing", byAuthor: "by Richard E. Warren"
+      }
+    };
+
+    var THEMES = {
+      origins:   { en: "Origins of Humanity", vi: "Nguồn gốc nhân loại" },
+      eden:      { en: "Adam & Eve",          vi: "Adam & Eve" },
+      faith:     { en: "Faith & Covenant",    vi: "Đức tin & Giao ước" },
+      angels:    { en: "Angels & War",        vi: "Thiên thần & Chiến tranh" },
+      afterlife: { en: "The Afterlife",       vi: "Thế giới bên kia" }
+    };
+
+    /* ================= Book data ================= */
+    var BOOKS = [
+      {
+        id: "resurrection",
+        cover: "assets/cover-resurrection.jpg",
+        buy: "https://cosmiccreations.biz/collections/all/products/resurrection-hall-a-mansion-world-odyssey-by-richard-e-warren",
+        theme: "afterlife",
+        era: { en: "The world beyond · The seven mansion worlds", vi: "Thế giới bên kia · Bảy thế giới nhà" },
+        title: { en: "Resurrection Hall", vi: "Resurrection Hall" },
+        subtitle: { en: "A Mansion World Odyssey", vi: "Cuộc phiêu lưu ở Thế Giới Nhà" },
+        desc: {
+          en: "What will it be like when you awaken after life on Earth? A newly resurrected mortal opens his eyes on the first mansion world and begins the long, joyful education of eternity — guided through the great Resurrection Hall where no one is lost and no one is forgotten.",
+          vi: "Sẽ ra sao khi bạn thức tỉnh sau kiếp sống trên Trái Đất? Một người phàm vừa phục sinh mở mắt nơi thế giới nhà đầu tiên và bắt đầu nền giáo dục dài lâu, đầy niềm vui của sự vĩnh hằng — được dẫn qua Đại Sảnh Phục Sinh vĩ đại, nơi không ai bị lạc mất và không ai bị lãng quên."
+        },
+        timeline: {
+          era: { en: "Beyond death", vi: "Phía sau cái chết" },
+          text: {
+            en: "The journey continues. A mortal awakens on the first of the seven mansion worlds and enrolls in the school of eternity.",
+            vi: "Hành trình tiếp diễn. Một người phàm thức tỉnh nơi thế giới nhà đầu tiên trong bảy thế giới nhà và nhập học trường học của sự vĩnh hằng."
+          }
+        },
+        chapters: [
+          { n: 1,
+            title: { en: "The Awakening", vi: "Sự Thức Tỉnh" },
+            paras: {
+              en: [
+                `Thomas opened his eyes to a light that did not hurt them. It was the gold of early morning, yet it came from everywhere at once, as if the air itself were luminous. He remembered the hospital room, the fading voices, the long tunnel of sleep — and then this: a hall of living crystal, vast and quiet, where music seemed to rise from the floor like the scent of rain.`,
+                `A woman stood beside his bed, if bed it was, smiling the smile of someone who has waited a long time and is in no hurry at all. Her robe shimmered like pearl held to the sun. "Welcome," she said. "You have slept the little sleep between worlds. This is the first mansion world, and your new life — the real one — begins today."`,
+                `He sat up slowly. His hands were young again. His heart, which had forgotten how to be calm, was calm. Somewhere beyond the crystal arches, a choir of voices was singing his name — not the name on his gravestone, but the name his soul had carried, secret and shining, since before he was born.`
+              ],
+              vi: [
+                `Thomas mở mắt ra trước một thứ ánh sáng không làm mắt chàng đau nhức. Đó là sắc vàng của buổi sớm mai, nhưng nó tỏa ra từ khắp mọi nơi cùng một lúc, như thể chính không khí cũng đang phát sáng. Chàng nhớ căn phòng bệnh viện, những giọng nói dần xa, giấc ngủ dài hun hút — và rồi là nơi này: một đại sảnh bằng pha lê sống, mênh mông và tĩnh lặng, nơi âm nhạc dường như dâng lên từ nền nhà như hương thơm của cơn mưa.`,
+                `Một người phụ nữ đứng bên chiếc giường — nếu đó là giường — mỉm cười bằng nụ cười của người đã chờ đợi rất lâu mà chẳng hề vội vã. Chiếc áo choàng của bà lấp lánh như ngọc trai đưa ra nắng. Bà nói: "Chào mừng con. Con vừa ngủ giấc ngủ ngắn giữa hai thế giới. Đây là thế giới nhà đầu tiên, và cuộc sống mới của con — cuộc sống đích thực — bắt đầu từ hôm nay."`,
+                `Chàng chậm rãi ngồi dậy. Đôi tay chàng trẻ lại. Trái tim chàng, vốn đã quên mất thế nào là bình yên, nay bình yên trở lại. Phía xa, ngoài những vòm pha lê, một dàn hợp xướng đang hát vang tên chàng — không phải cái tên khắc trên bia mộ, mà là cái tên linh hồn chàng vẫn mang theo, bí mật và rạng rỡ, từ trước cả khi chàng chào đời.`
+              ]
+            }
+          },
+          { n: 2,
+            title: { en: "The Hall of Records", vi: "Đại Sảnh Phục Sinh" },
+            paras: {
+              en: [
+                `On the third day — though days here were measured in light, not hours — Selene led him to the Resurrection Hall itself, a dome of glass and gold that held the memory of a million arrivals. "Everyone passes through this hall," she said. "No one is lost. No one is forgotten. Every mortal who ever hoped for more than the dust is written here, and rises here."`,
+                `Inside, the air hummed with quiet joy. Thomas watched a small girl from another century run laughing into the arms of grandparents she had never met on Earth. He watched an old soldier weep as a seraphic guide unrolled the scroll of his life — not to judge him, but to show him where love had hidden in the middle of his sorrow.`,
+                `"And when I am ready?" Thomas asked. Selene gestured toward the seven gleaming spheres that turned slowly above the city. "Then you climb," she said. "World by world, lesson by lesson, toward the Father's house. Eternity is not a reward, Thomas. It is an education — and you have just enrolled."`
+              ],
+              vi: [
+                `Vào ngày thứ ba — dù ở đây ngày được đo bằng ánh sáng chứ không bằng giờ giấc — Selene dẫn chàng đến chính Đại Sảnh Phục Sinh, một mái vòm bằng kính và vàng lưu giữ ký ức của hàng triệu lượt người đến. Bà nói: "Ai cũng đi qua sảnh này. Không ai bị lạc mất. Không ai bị lãng quên. Mọi người trần từng hy vọng vào điều gì đó lớn hơn cát bụi đều được ghi tên ở đây, và đều trỗi dậy ở đây."`,
+                `Bên trong, không khí ngân vang niềm vui tĩnh lặng. Thomas nhìn một bé gái thuộc một thế kỷ khác chạy cười vào vòng tay của ông bà mà em chưa từng gặp trên Trái Đất. Chàng nhìn một người lính già khóc khi vị thiên sứ hướng dẫn mở cuộn giấy ghi lại cuộc đời ông — không phải để phán xét, mà để chỉ cho ông thấy tình yêu đã ẩn mình ở đâu giữa những nỗi buồn.`,
+                `"Và khi con sẵn sàng thì sao?" Thomas hỏi. Selene chỉ tay về phía bảy quả cầu lấp lánh đang chậm rãi xoay phía trên thành phố. "Khi đó con sẽ leo lên," bà nói. "Từng thế giới một, từng bài học một, hướng về nhà của Cha. Sự vĩnh hằng không phải là phần thưởng đâu Thomas. Nó là một nền giáo dục — và con vừa mới nhập học."`
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: "battlefield",
+        cover: "assets/cover-battlefield.jpg",
+        buy: "https://cosmiccreations.biz/products/battlefield-guardians-angels-in-vietnam-by-richard-e-warren",
+        theme: "angels",
+        era: { en: "Vietnam, the war years", vi: "Việt Nam, những năm chiến tranh" },
+        title: { en: "Battlefield Guardians", vi: "Battlefield Guardians" },
+        subtitle: { en: "Angels in Vietnam", vi: "Những thiên thần ở Việt Nam" },
+        desc: {
+          en: "On the battlefields of Vietnam, young soldiers were watched over by guardians they could not see. Told from both sides of the veil, this is a story of unseen protection, impossible escapes, and the tenderness of heaven in the middle of war.",
+          vi: "Trên những chiến trường Việt Nam, những người lính trẻ được các thiên hộ dõi theo mà họ không hề nhìn thấy. Được kể từ cả hai phía của bức màn, đây là câu chuyện về sự chở che vô hình, những lần thoát chết không tưởng, và tình thương dịu dàng của thiên đàng giữa lòng chiến tranh."
+        },
+        timeline: {
+          era: { en: "The 1960s–70s", vi: "Thập niên 1960–70" },
+          text: {
+            en: "In the jungles of Vietnam, guardian angels walk beside a patrol of young soldiers — unseen, but never absent.",
+            vi: "Trong rừng rậm Việt Nam, các thiên thần hộ mệnh bước đi bên cạnh đội tuần tra của những người lính trẻ — vô hình, nhưng không bao giờ vắng mặt."
+          }
+        },
+        chapters: [
+          { n: 1,
+            title: { en: "The Valley of Mist", vi: "Thung Lũng Sương Mù" },
+            paras: {
+              en: [
+                `The valley below Khe Sanh woke before the men did. Mist curled off the river in white ribbons, and somewhere beyond the tree line a bird was singing as if there were no war at all. Private Danny Ruiz, nineteen years old and three weeks in country, tightened the straps of his pack and thought about his mother's letters, folded soft as cloth in his breast pocket.`,
+                `He did not see the ones who walked beside the column. No one did. But Corporal James Whitfield, who had survived two tours by listening to a feeling he could not name, felt it again that morning — a pressure in the air, a stillness inside the noise — like being watched over by a kind and invisible sky.`,
+                `"Stay close today," James told the boy, and could not have said why. Above the mist, unseen by every eye in the valley, two guardians kept pace with the patrol, their forms bright as heat lightning, their attention fixed on the young men below with a tenderness older than the war, older than the nation that had sent them, older than the hills themselves.`
+              ],
+              vi: [
+                `Thung lũng dưới chân Khe Sanh thức dậy trước cả những người lính. Sương cuộn lên từ dòng sông thành từng dải trắng, và đâu đó phía bên kia rặng cây, một con chim đang hót như thể chẳng hề có chiến tranh. Binh nhì Danny Ruiz, mười chín tuổi, mới sang được ba tuần, siết chặt quai ba lô và nghĩ về những lá thư của mẹ, gấp mềm như vải, nằm trong túi áo trước ngực.`,
+                `Cậu không nhìn thấy những đấng đang bước đi bên cạnh đoàn quân. Không ai nhìn thấy cả. Nhưng hạ sĩ James Whitfield, người đã sống sót qua hai đợt phục vụ nhờ lắng nghe một linh cảm không gọi được tên, sáng hôm đó lại cảm thấy nó — một sức ép trong không khí, một sự tĩnh lặng giữa tiếng ồn — như đang được dõi theo bởi một bầu trời nhân từ và vô hình.`,
+                `"Hôm nay đi sát vào," James bảo cậu lính trẻ, mà chính anh cũng không nói được vì sao. Phía trên làn sương, khuất khỏi mọi ánh mắt trong thung lũng, hai vị thiên hộ đang theo kịp đội tuần tra, hình dáng sáng như chớp nhiệt, ánh mắt dõi xuống những chàng trai trẻ bên dưới với một tình thương lâu đời hơn cả cuộc chiến, lâu đời hơn cả quốc gia đã đưa họ đến đây, lâu đời hơn cả những ngọn đồi.`
+              ]
+            }
+          },
+          { n: 2,
+            title: { en: "The Ambush", vi: "Trận Phục Kích" },
+            paras: {
+              en: [
+                `The first shot cracked the morning in half. The patrol dropped into the elephant grass as the valley erupted, and Danny found himself frozen — not with fear, exactly, but with the terrible clarity of a boy who understands all at once that the world can end on a Tuesday.`,
+                `Then something moved between him and the muzzle flashes. He would describe it later, in the hospital, and the chaplain would write it down without comment: a figure of light, tall as a doorway, standing where no man stood, with one arm raised like a shield. The burst that should have found Danny's chest tore into the earth a hand's breadth from his face.`,
+                `James dragged him to cover by the collar. "You breathe, you move, you live — in that order!" he shouted. But Danny kept looking back at the empty, smoking grass where the figure had been, and he understood that he had not been spared by luck. He had been guarded — deliberately, personally, and at close range — by someone heaven had assigned to him before he ever learned to walk.`
+              ],
+              vi: [
+                `Phát súng đầu tiên xé buổi sáng làm đôi. Đội tuần tra đổ rạp xuống cỏ voi khi thung lũng bùng nổ, và Danny thấy mình đông cứng — không hẳn vì sợ, mà vì sự tỉnh táo khủng khiếp của một cậu trai chợt hiểu ra rằng thế giới có thể kết thúc vào một ngày thứ Ba bình thường.`,
+                `Rồi có điều gì đó chuyển động giữa cậu và những tia lửa đầu nòng. Sau này, trong bệnh viện, cậu sẽ kể lại điều ấy, và vị tuyên úy sẽ ghi lại mà không bình luận gì: một hình bóng bằng ánh sáng, cao như một khung cửa, đứng ở nơi không có người nào đứng, một cánh tay giơ lên như chiếc khiên. Loạt đạn lẽ ra đã găm vào ngực Danny xé vào mặt đất chỉ cách mặt cậu một gang tay.`,
+                `James kéo cậu vào chỗ nấp bằng cổ áo. "Thở được thì bò, bò được thì sống — theo đúng thứ tự đó!" anh hét lên. Nhưng Danny vẫn ngoái nhìn bãi cỏ trống đang bốc khói nơi hình bóng ấy vừa đứng, và cậu hiểu rằng mình không phải được tha mạng nhờ may rủi. Cậu đã được che chở — một cách có chủ đích, riêng tư, và ở cự ly rất gần — bởi một đấng mà thiên đàng đã cử đến cho cậu từ trước khi cậu biết đi.`
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: "gardens",
+        cover: "assets/cover-gardens.jpg",
+        theme: "eden",
+        era: { en: "Some 37,000 years ago · The Garden of Eden", vi: "Khoảng 37.000 năm trước · Vườn Địa Đàng" },
+        title: { en: "The Gardens of Eden", vi: "The Gardens of Eden" },
+        subtitle: { en: "Life and Times of Adam and Eve", vi: "Cuộc đời và thời đại của Adam và Eve" },
+        desc: {
+          en: "Adam and Eve as you have never met them: a trained and radiant Material Son and Daughter who arrive on a young world to build a garden of two hundred thousand trees, raise a family, teach the tribes — and face the most consequential choice in human history.",
+          vi: "Adam và Eve như bạn chưa từng biết: một Người Con và Người Nữ Vật Chất rạng rỡ, được huấn luyện kỹ lưỡng, đến với một thế giới non trẻ để xây dựng khu vườn hai trăm ngàn cây, nuôi dạy một gia đình, dạy dỗ các bộ tộc — và đối diện với lựa chọn trọng đại nhất trong lịch sử nhân loại."
+        },
+        timeline: {
+          era: { en: "~37,000 years ago", vi: "~37.000 năm trước" },
+          text: {
+            en: "Adam and Eve arrive to build the Garden of Eden — a center of light and culture for a young world.",
+            vi: "Adam và Eve đến để xây dựng Vườn Địa Đàng — một trung tâm ánh sáng và văn hóa cho một thế giới non trẻ."
+          }
+        },
+        chapters: [
+          { n: 1,
+            title: { en: "The Arrival of the Gardeners", vi: "Những Người Làm Vườn Đến" },
+            paras: {
+              en: [
+                `They came to the peninsula between the rivers in the days when the garden was still a promise — two hundred thousand trees marked out in sweeping circles, fountains planned along avenues of flowers, and at the center, rising day by day, the shrine of the unseen Father.`,
+                `Adam stood on the ridge at dawn and watched the mist lift off the water. Beside him, Eve held a basket of seed heads from the northern beds, her hair braided with the small white blossoms the children loved. They were not as the storybooks of later ages would paint them — not naive, not idle — but a trained and radiant pair, a Material Son and Daughter sent to lift a young world toward the light.`,
+                `"Today the east canal," Eve said. "And the planting of the life-bearing trees along the wall." Adam smiled. "A garden is a slow sermon," he answered. "We preach it one flower at a time." Below them, the first bells of the morning school rang across the water, and ten thousand hopeful settlers turned their faces toward the rising sun.`
+              ],
+              vi: [
+                `Họ đến bán đảo nằm giữa hai dòng sông vào những ngày khu vườn vẫn còn là một lời hứa — hai trăm ngàn cây được đánh dấu theo những vòng tròn uốn lượn, đài phun nước được quy hoạch dọc những đại lộ hoa, và ở trung tâm, ngày một cao dần, là điện thờ của Đấng Cha vô hình.`,
+                `Adam đứng trên sườn đồi lúc bình minh, ngắm sương tan trên mặt nước. Bên cạnh chàng, Eve cầm một giỏ hạt giống từ những luống phía bắc, mái tóc tết cài những bông hoa trắng nhỏ mà lũ trẻ yêu thích. Họ không như tranh vẽ của các đời sau — không ngây thơ, không nhàn rỗi — mà là một cặp đôi rạng rỡ, được huấn luyện kỹ lưỡng: một Người Con Vật Chất và một Người Nữ Vật Chất được phái đến để nâng một thế giới non trẻ lên cùng ánh sáng.`,
+                `"Hôm nay đào con kênh phía đông," Eve nói. "Và trồng hàng cây mang sự sống dọc theo bức tường." Adam mỉm cười. "Một khu vườn là một bài giảng chậm rãi," chàng đáp. "Mình giảng nó từng bông hoa một." Phía dưới, tiếng chuông đầu tiên của trường học buổi sáng vang qua mặt nước, và mười ngàn người định cư đầy hy vọng cùng hướng mặt về phía mặt trời đang lên.`
+              ]
+            }
+          },
+          { n: 2,
+            title: { en: "The Tree of Life", vi: "Cây Sự Sống" },
+            paras: {
+              en: [
+                `At the heart of the garden, enclosed by walls of living green, stood the tree whose fruit was not fruit at all but energy — the tree of life, a shrub of Edentia transplanted to Earth, whose leaves renewed the bodies of the garden's stewards and held back the long decay of mortal flesh.`,
+                `Once in each cycle, Adam and Eve walked the shaded path to its court together, as their instructions required, and partook in silence and gratitude. Around them the garden breathed: irrigation channels singing over stone, the great floral clock opening its petals to the hour, children of the settlers racing along the mosaic walks with armfuls of cuttings for the new terraces.`,
+                `"It is not the tree that keeps us," Eve said quietly, resting her hand against its silver bark. "It is obedience. The tree only reminds us whose garden this is." Adam nodded toward the shrine, where the evening light had begun to gather like gold dust. "Then let us be worth reminding," he said, and they walked home through the perfume of ten thousand opening flowers.`
+              ],
+              vi: [
+                `Ở trái tim của khu vườn, bao quanh bởi những bức tường xanh sống động, đứng cây mà quả của nó không phải là quả, mà là năng lượng — cây sự sống, một giống cây bụi của Edentia được mang xuống Trái Đất, mà lá của nó làm mới thân thể những người coi sóc khu vườn và đẩy lui sự tàn phai dài lâu của xác thịt phàm trần.`,
+                `Mỗi chu kỳ một lần, Adam và Eve cùng nhau đi con đường rợp bóng vào sân của cây, đúng như chỉ dẫn dành cho họ, và cùng hưởng lấy trong thinh lặng và biết ơn. Quanh họ, khu vườn đang thở: những con kênh tưới hát trên đá, chiếc đồng hồ hoa vĩ đại mở cánh theo giờ, lũ trẻ của những người định cư chạy dọc lối đi khảm đá với những ôm cành giống cho các bậc thềm mới.`,
+                `"Không phải cái cây giữ gìn chúng ta," Eve khẽ nói, đặt tay lên lớp vỏ bạc của cây. "Mà là sự vâng lời. Cây chỉ nhắc ta nhớ khu vườn này là của ai." Adam gật đầu về phía điện thờ, nơi ánh sáng buổi chiều bắt đầu tụ lại như bụi vàng. "Vậy thì hãy sống sao cho xứng đáng được nhắc," chàng nói, và hai người cùng đi về nhà giữa hương thơm của mười ngàn bông hoa đang nở.`
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: "melchizedek",
+        cover: "assets/cover-melchizedek.jpg",
+        theme: "faith",
+        era: { en: "Nearly 4,000 years ago · Salem", vi: "Gần 4.000 năm trước · Salem" },
+        title: { en: "The Melchizedek Mission", vi: "The Melchizedek Mission" },
+        subtitle: { en: "Saving the Truth", vi: "Sứ mệnh Melchizedek — Giữ gìn chân lý" },
+        desc: {
+          en: "When the knowledge of one God was about to vanish from the earth, a mysterious sage appeared at Salem: Melchizedek, king of peace and priest of the Most High, who taught the tribes of Canaan and sealed a covenant of faith with Abraham that would echo through all of history.",
+          vi: "Khi nhận biết về một Thiên Chúa duy nhất sắp biến mất khỏi mặt đất, một hiền nhân bí ẩn xuất hiện tại Salem: Melchizedek, vua của hòa bình và tư tế của Đấng Tối Cao, người đã dạy dỗ các bộ tộc Canaan và lập với Abraham một giao ước đức tin còn vang vọng suốt dòng lịch sử."
+        },
+        timeline: {
+          era: { en: "~2000 BCE", vi: "~2000 TCN" },
+          text: {
+            en: "Melchizedek of Salem teaches the one God and makes a covenant of faith with Abraham.",
+            vi: "Melchizedek của Salem giảng dạy về một Thiên Chúa duy nhất và lập giao ước đức tin với Abraham."
+          }
+        },
+        chapters: [
+          { n: 1,
+            title: { en: "The Stranger at Salem", vi: "Người Lạ Ở Salem" },
+            paras: {
+              en: [
+                `He appeared in the days when Salem was little more than a cluster of tents and olive terraces above the valley — a tall figure in undyed wool, with the bearing of a king and the tools of a scribe, who gave his name as Melchizedek and asked for nothing but a hearing.`,
+                `The elders expected another warlord. Instead he taught them of El Elyon, the Most High God, one God over all the tribes of men, who required neither smoke nor blood but faithfulness and clean hands. He opened a school under the great oak, and young men came down from the hills with their questions like empty jars.`,
+                `"Your fathers worshipped the river and the storm because they were great," he told them, by firelight. "I have come to tell you of the One who made the river and commands the storm — and who loves a tent-dweller's son as surely as a king." In the silence that followed, an old woman began, very softly, to weep — not from sorrow, but from recognition, as if a door she had passed all her life had finally opened.`
+              ],
+              vi: [
+                `Ngài xuất hiện vào những ngày Salem còn chỉ là một cụm lều và những bậc thềm ô liu phía trên thung lũng — một dáng người cao lớn trong chiếc áo len không nhuộm, mang phong thái của một vị vua và đồ nghề của một thầy ký lục, tự xưng là Melchizedek và không đòi hỏi gì ngoài được lắng nghe.`,
+                `Các trưởng lão cứ ngỡ sẽ gặp thêm một lãnh chúa nữa. Nhưng thay vào đó, ngài dạy họ về El Elyon, Đức Chúa Tối Cao, một Thiên Chúa trên mọi bộ tộc loài người, Đấng không đòi khói hương hay máu huyết, mà đòi lòng trung tín và đôi tay trong sạch. Ngài mở một trường học dưới gốc cây sồi lớn, và những chàng trai trẻ từ các ngọn đồi kéo xuống, mang theo những câu hỏi như những chiếc bình rỗng.`,
+                `"Cha ông các con thờ con sông và cơn bão vì chúng vĩ đại," ngài nói với họ bên ánh lửa. "Ta đến để nói cho các con về Đấng đã tạo nên con sông và truyền lệnh cho cơn bão — và Đấng yêu thương con trai của một người chăn lều chắc chắn như yêu thương một vị vua." Trong sự im lặng tiếp theo, một bà lão bắt đầu khóc, rất khẽ — không phải vì buồn, mà vì nhận ra, như thể một cánh cửa bà đã đi ngang suốt cả đời nay cuối cùng đã mở.`
+              ]
+            }
+          },
+          { n: 2,
+            title: { en: "The Covenant of Faith", vi: "Giao Ước Của Đức Tin" },
+            paras: {
+              en: [
+                `Of all who climbed the hill to Salem, none listened like the herdsman from Ur. Abram came with dust on his sandals and a hundred questions in his heart, and he stayed through the season of rains, sitting at the edge of the fire circle long after the young students had gone to their blankets.`,
+                `"You ask for a sign," Melchizedek said at last. "I offer you something better. A covenant. Not written on stone, which breaks, nor sealed with blood, which dries — but carried in the living faith of a man who trusts the Most High when the road disappears." He broke the bread of Salem between them and poured the dark wine. "Eat, and remember. Drink, and believe."`,
+                `Abram took the bread with both hands, the way a man receives a treasure. "Then my children's children will carry it too," he said. Melchizedek smiled the smile of one who had watched a hundred generations and could afford to be patient. "That," said the sage of Salem, "is precisely the mission."`
+              ],
+              vi: [
+                `Trong tất cả những người leo lên đồi Salem, không ai lắng nghe như người chăn gia súc đến từ Ur. Abram đến với cát bụi trên đôi dép và hàng trăm câu hỏi trong lòng, và ông ở lại suốt mùa mưa, ngồi ở rìa vòng lửa rất lâu sau khi các học trò trẻ đã về chăn nghỉ.`,
+                `"Con xin một dấu lạ," cuối cùng Melchizedek nói. "Ta cho con một điều tốt hơn. Một giao ước. Không viết trên đá, vì đá sẽ vỡ, không đóng ấn bằng máu, vì máu sẽ khô — mà được mang trong đức tin sống động của một con người biết tin cậy Đấng Tối Cao khi con đường biến mất." Ngài bẻ chiếc bánh của Salem chia cho hai người và rót rượu nho đậm. "Ăn đi, và hãy nhớ. Uống đi, và hãy tin."`,
+                `Abram đón lấy bánh bằng cả hai tay, như cách người ta đón một báu vật. "Vậy thì con cháu của con cũng sẽ mang theo giao ước này." Melchizedek mỉm cười nụ cười của người đã chứng kiến hàng trăm thế hệ và có đủ kiên nhẫn để chờ. "Đó," vị hiền nhân của Salem nói, "chính là sứ mệnh."`
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: "firsthumans",
+        cover: "assets/cover-firsthumans.jpg",
+        coverArt: true,
+        theme: "origins",
+        era: { en: "Nearly a million years ago · The dawn of humanity", vi: "Gần một triệu năm trước · Bình minh nhân loại" },
+        title: { en: "The First Humans", vi: "The First Humans" },
+        subtitle: { en: "Andon and Fonta", vi: "Những con người đầu tiên — Andon và Fonta" },
+        desc: {
+          en: "Nearly a million years ago, two twins of a hill tribe did something no creature on Earth had ever done: they stood upright, they spoke a name, and they made fire with their own hands. The story of Andon and Fonta — the first true human beings, and the original family of us all.",
+          vi: "Gần một triệu năm trước, một cặp song sinh của một bộ tộc trên đồi đã làm điều mà chưa sinh linh nào trên Trái Đất từng làm: chúng đứng thẳng, chúng gọi thành một cái tên, và chúng tự tay tạo ra lửa. Câu chuyện về Andon và Fonta — những con người đích thực đầu tiên, và gia đình nguyên thủy của tất cả chúng ta."
+        },
+        timeline: {
+          era: { en: "~1,000,000 years ago", vi: "~1.000.000 năm trước" },
+          text: {
+            en: "Andon and Fonta, the first true humans, stand upright, speak, and make the first fire of their own.",
+            vi: "Andon và Fonta, những con người đích thực đầu tiên, đứng thẳng, biết nói, và tự tạo ra ngọn lửa đầu tiên."
+          }
+        },
+        chapters: [
+          { n: 1,
+            title: { en: "The Twins Who Stood Upright", vi: "Cặp Song Sinh Đứng Thẳng" },
+            paras: {
+              en: [
+                `They were born in the year the river changed its course, twins of the hill tribe, and from their first season they were different. Where the others knuckled through the dust, Andon stood — fully, stubbornly upright — and laughed at the sky. Where the others snatched and screamed over food, Fonta watched, and thought, and remembered where the sweet roots grew after the rains.`,
+                `It was Fonta who first understood the meaning of the sounds her brother made when he pointed at the red berries, and Andon who first made a sound that was not a cry but a name — her name. Between the pointing and the naming, in a clearing above the river, the human mind opened its eyes for the first time on Earth.`,
+                `The tribe feared them a little, the way one fears a fire seen from far off. But the twins were not afraid. Hand in hand they climbed the ridge each dawn to watch the sun take the valley, two small figures against the enormous morning, carrying between them the newest and most fragile thing in the world: a thought about tomorrow.`
+              ],
+              vi: [
+                `Chúng chào đời vào năm dòng sông đổi dòng, một cặp song sinh của bộ tộc trên đồi, và ngay từ mùa đầu tiên, chúng đã khác biệt. Trong khi những đứa trẻ khác đi bằng cả tay lẫn chân qua lớp bụi, Andon đứng — đứng thẳng hoàn toàn, một cách bướng bỉnh — và cười với bầu trời. Trong khi những đứa khác giành giật và la hét vì thức ăn, Fonta quan sát, suy nghĩ, và ghi nhớ nơi những củ ngọt mọc sau cơn mưa.`,
+                `Chính Fonta là người đầu tiên hiểu ý nghĩa của những âm thanh anh trai mình phát ra khi chỉ tay vào chùm quả đỏ, và chính Andon là người đầu tiên tạo ra một âm thanh không phải là tiếng kêu, mà là một cái tên — tên của em gái mình. Giữa cái chỉ tay và cái gọi tên ấy, trong một khoảng đất trống phía trên dòng sông, tâm trí con người đã mở mắt lần đầu tiên trên Trái Đất.`,
+                `Bộ tộc hơi sợ chúng, như người ta sợ một đám lửa nhìn từ xa. Nhưng cặp song sinh thì không sợ. Tay trong tay, mỗi bình minh chúng leo lên sườn đồi ngắm mặt trời chiếm lấy thung lũng, hai bóng hình nhỏ bé trước buổi sáng mênh mông, mang theo giữa chúng điều mới mẻ và mong manh nhất trên thế gian: một ý nghĩ về ngày mai.`
+              ]
+            }
+          },
+          { n: 2,
+            title: { en: "The First Fire of Their Own", vi: "Ngọn Lửa Đầu Tiên Của Riêng Mình" },
+            paras: {
+              en: [
+                `The night the storm killed the tribe's fire, the hill people wailed in the dark, for fire had always been a gift stolen from heaven's anger and guarded like a living child. But Andon remembered the sparks that flew when he struck stone on stone to shape his digging tool — and Fonta, who forgot nothing, brought him dry moss and the hollow reed.`,
+                `They worked until their hands bled and the tribe had fallen silent with watching. Then, in the cup of Fonta's palms, a thread of smoke uncurled — rose — and bloomed into flame, a flame no storm had given them, a fire of their own making. The old ones crept close with tears cutting the ash on their cheeks.`,
+                `"Now no night can take it from us," Andon said, and Fonta fed the little fire a twig, and then another. Two children of the dawn, warming their hands at the beginning of history — and above them, unseen, the long patient heavens rejoiced, for the creature who could make fire could one day learn to carry light.`
+              ],
+              vi: [
+                `Đêm cơn bão dập tắt ngọn lửa của bộ tộc, người trên đồi than khóc trong bóng tối, bởi lửa xưa nay là món quà đánh cắp từ cơn thịnh nộ của trời và được canh giữ như một đứa trẻ sống. Nhưng Andon nhớ những tia lửa văng ra khi cậu đập đá vào đá để đẽo dụng cụ đào đất — và Fonta, người không quên điều gì, mang đến cho cậu rêu khô và ống sậy rỗng.`,
+                `Chúng làm việc đến khi đôi tay rướm máu và cả bộ tộc đã lặng đi vì dõi theo. Rồi, trong vòng tay khum của Fonta, một sợi khói cuộn lên — vươn cao — và bừng thành ngọn lửa, một ngọn lửa không cơn bão nào ban tặng, một ngọn lửa do chính chúng làm ra. Các bậc trưởng lão bò lại gần, nước mắt rạch những vệt trên gò má đầy tro.`,
+                `"Từ nay không đêm tối nào cướp được nó khỏi chúng ta nữa," Andon nói, và Fonta bón cho ngọn lửa nhỏ một cành củi, rồi thêm một cành nữa. Hai đứa trẻ của buổi bình minh nhân loại, sưởi ấm đôi tay bên khởi đầu của lịch sử — và phía trên chúng, trong vô hình, cả thiên đàng kiên nhẫn bao đời cùng hoan hỉ, bởi sinh linh biết tự tạo ra lửa, một ngày kia sẽ học được cách mang theo ánh sáng.`
+              ]
+            }
+          }
+        ]
+      }
+    ];
+
+    var TIMELINE_ORDER = ["firsthumans", "gardens", "melchizedek", "battlefield", "resurrection"];
+</script>
+
+    <script>
+    "use strict";
+    /* ================= state ================= */
+    var lang = "vi";
+    var currentView = "home";
+    var currentBookId = null;
+    var currentChapter = 1;
+    var themeFilter = "all";
+    var searchQuery = "";
+    var bookmarks = {}; /* "bookId:ch" -> true */
+    var notes = {};     /* "bookId:ch" -> text */
+    var readerFont = 1.06; /* rem */
+    var readerTheme = "light";
+
+    var audio = document.getElementById("audioEl");
+    var track = null; /* {bookId, ch} */
+    var speeds = [1, 1.25, 1.5, 2];
+    var speedIdx = 0;
+
+    function $(s, r) { return (r || document).querySelector(s); }
+    function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+    function t(key) { return I18N[lang][key]; }
+    function bookById(id) { for (var i = 0; i < BOOKS.length; i++) if (BOOKS[i].id === id) return BOOKS[i]; return null; }
+    function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+    function fmtTime(sec) {
+      if (!isFinite(sec) || sec < 0) sec = 0;
+      sec = Math.floor(sec);
+      return Math.floor(sec / 60) + ":" + ("0" + (sec % 60)).slice(-2);
+    }
+    function audioSrc(bookId, ch) { return "assets/audio/" + bookId + "-" + ch + "-" + lang + ".mp3"; }
+
+    var ICON_BOOK = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>';
+    var ICON_PLAY = '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>';
+    var ICON_HEAD = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/></svg>';
+
+    /* ================= language ================= */
+    function applyLang() {
+      document.documentElement.lang = lang;
+      $$("[data-i18n]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-i18n")); });
+      $$("[data-i18n-ph]").forEach(function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
+      $("#langVi").classList.toggle("on", lang === "vi");
+      $("#langEn").classList.toggle("on", lang === "en");
+      renderFeatured(); renderTimeline(); renderChips(); renderLibrary(); renderBookmarks();
+      if (currentBookId) renderDetail(currentBookId);
+      if (currentView === "reader") renderReader(false);
+      updatePlayerMeta();
+      /* If a track is loaded, swap to the same chapter in the new language, keeping position. */
+      if (track) {
+        var wasPlaying = !audio.paused && !audio.ended;
+        var pos = audio.currentTime || 0;
+        var src = audioSrc(track.bookId, track.ch);
+        if (audio.getAttribute("src") !== src) {
+          audio.src = src;
+          audio.playbackRate = speeds[speedIdx];
+          audio.addEventListener("loadedmetadata", function once() {
+            audio.removeEventListener("loadedmetadata", once);
+            try { audio.currentTime = pos; } catch (e) {}
+            if (wasPlaying) audio.play();
+          });
+        }
+      }
+    }
+    function setLang(l) { if (l !== lang) { lang = l; applyLang(); } }
+    $("#langVi").addEventListener("click", function () { setLang("vi"); });
+    $("#langEn").addEventListener("click", function () { setLang("en"); });
+
+    /* ================= navigation ================= */
+    function showView(name) {
+      currentView = name;
+      ["home", "library", "bookmarks", "detail", "reader"].forEach(function (v) {
+        $("#view-" + v).classList.toggle("show", v === name);
+      });
+      $$("nav.main button").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-nav") === name);
+      });
+      window.scrollTo({ top: 0 });
+    }
+    document.addEventListener("click", function (e) {
+      var nav = e.target.closest("[data-nav]");
+      if (nav) { e.preventDefault(); showView(nav.getAttribute("data-nav")); }
+    });
+    function openBook(id) { currentBookId = id; renderDetail(id); showView("detail"); }
+    function openReader(bookId, ch) {
+      currentBookId = bookId; currentChapter = ch;
+      renderReader(true);
+      showView("reader");
+    }
+    $("#readerBack").addEventListener("click", function () { if (currentBookId) openBook(currentBookId); });
+    $("#heroListen").addEventListener("click", function () { playChapter("resurrection", 1, true); });
+
+    /* ================= cards ================= */
+    function coverHTML(book, cls) {
+      if (book.coverArt) {
+        return '<div class="' + cls + ' art"><img src="' + book.cover + '" alt="' + esc(book.title.en) + ' — ' + esc(book.subtitle.en) + '" />' +
+          '<div class="art-title"><span class="t">' + esc(book.title[lang]) + '</span><span class="s">' + esc(book.subtitle[lang]) + '</span></div></div>';
+      }
+      return '<div class="' + cls + '"><img src="' + book.cover + '" alt="' + esc(book.title.en) + ' — ' + esc(book.subtitle.en) + '" /></div>';
+    }
+    function cardHTML(book) {
+      return '<button type="button" class="card" data-book="' + book.id + '">' +
+        coverHTML(book, "cover") +
+        '<span class="body">' +
+          '<h3>' + esc(book.title[lang]) + '</h3>' +
+          '<span class="sub">' + esc(book.subtitle[lang]) + '</span>' +
+          '<span class="desc">' + esc(book.desc[lang]) + '</span>' +
+          '<span class="tagrow"><span class="tag">' + esc(THEMES[book.theme][lang]) + '</span></span>' +
+          '<span class="meta"><span>' + book.chapters.length + ' ' + esc(t("chapter").toLowerCase()) + '</span><span>EN · VI</span></span>' +
+        '</span></button>';
+    }
+    function renderFeatured() {
+      $("#featuredGrid").innerHTML = BOOKS.map(cardHTML).join("");
+    }
+    function renderTimeline() {
+      $("#timeline").innerHTML = TIMELINE_ORDER.map(function (id) {
+        var b = bookById(id);
+        return '<div class="tl-item"><div class="tl-era">' + esc(b.timeline.era[lang]) + '</div>' +
+          '<h3>' + esc(b.title[lang]) + '</h3><p>' + esc(b.timeline.text[lang]) + '</p>' +
+          '<button type="button" class="linkish" data-book="' + b.id + '">' + esc(t("viewBook")) + ' →</button></div>';
+      }).join("");
+    }
+    document.addEventListener("click", function (e) {
+      var c = e.target.closest("[data-book]");
+      if (c) openBook(c.getAttribute("data-book"));
+    });
+
+    /* ================= library ================= */
+    function renderChips() {
+      var html = '<button type="button" class="chip' + (themeFilter === "all" ? " on" : "") + '" data-theme="all">' + esc(t("themeAll")) + '</button>';
+      Object.keys(THEMES).forEach(function (k) {
+        html += '<button type="button" class="chip' + (themeFilter === k ? " on" : "") + '" data-theme="' + k + '">' + esc(THEMES[k][lang]) + '</button>';
+      });
+      $("#themeChips").innerHTML = html;
+    }
+    $("#themeChips").addEventListener("click", function (e) {
+      var chip = e.target.closest("[data-theme]");
+      if (!chip) return;
+      themeFilter = chip.getAttribute("data-theme");
+      renderChips(); renderLibrary();
+    });
+    $("#searchInput").addEventListener("input", function (e) {
+      searchQuery = e.target.value.trim().toLowerCase();
+      renderLibrary();
+    });
+    function bookMatches(book) {
+      if (themeFilter !== "all" && book.theme !== themeFilter) return false;
+      if (!searchQuery) return true;
+      var hay = [book.title.en, book.title.vi, book.subtitle.en, book.subtitle.vi,
+        book.desc.en, book.desc.vi, THEMES[book.theme].en, THEMES[book.theme].vi];
+      book.chapters.forEach(function (ch) {
+        hay.push(ch.title.en, ch.title.vi);
+        hay = hay.concat(ch.paras.en, ch.paras.vi);
+      });
+      return hay.join(" \n ").toLowerCase().indexOf(searchQuery) !== -1;
+    }
+    function renderLibrary() {
+      var list = BOOKS.filter(bookMatches);
+      $("#libraryGrid").innerHTML = list.map(cardHTML).join("");
+      $("#libraryEmpty").hidden = list.length > 0;
+    }
+
+    /* ================= detail ================= */
+    function renderDetail(id) {
+      var b = bookById(id); if (!b) return;
+      var chapters = b.chapters.map(function (ch) {
+        return '<div class="ch-row"><span class="ch-num">' + ch.n + '</span>' +
+          '<span class="ch-t"><b>' + esc(ch.title[lang]) + '</b><span>' + esc(t("chapter")) + ' ' + ch.n + ' · ' + esc(t("sampleNote")) + '</span></span>' +
+          '<span class="ch-acts">' +
+            '<button type="button" class="icon-btn" data-read="' + b.id + ':' + ch.n + '" aria-label="' + esc(t("read")) + '">' + ICON_BOOK + '</button>' +
+            '<button type="button" class="icon-btn solid" data-listen="' + b.id + ':' + ch.n + '" aria-label="' + esc(t("listen")) + '">' + ICON_PLAY + '</button>' +
+          '</span></div>';
+      }).join("");
+      var buy = b.buy ? '<p style="margin-top:18px"><a href="' + b.buy + '" target="_blank" rel="noopener">' + esc(t("buyPrint")) + ' ↗</a></p>' : "";
+      $("#detailBody").innerHTML =
+        '<div class="detail">' +
+          coverHTML(b, "dcover") +
+          '<div>' +
+            '<h1>' + esc(b.title[lang]) + '</h1>' +
+            '<div class="dsub">' + esc(b.subtitle[lang]) + '</div>' +
+            '<p class="ddesc">' + esc(b.desc[lang]) + '</p>' +
+            '<div class="facts">' +
+              '<span class="tag">' + esc(t("publisher")) + ': Cosmic Creations</span>' +
+              '<span class="tag">' + esc(t("era")) + ': ' + esc(b.era[lang]) + '</span>' +
+              '<span class="tag">' + esc(t("themes")) + ': ' + esc(THEMES[b.theme][lang]) + '</span>' +
+            '</div>' +
+            '<div class="actions">' +
+              '<button type="button" class="btn btn-teal" data-read="' + b.id + ':1">' + ICON_BOOK + ' ' + esc(t("read")) + '</button>' +
+              '<button type="button" class="btn btn-gold" data-listen="' + b.id + ':1">' + ICON_HEAD + ' ' + esc(t("listen")) + '</button>' +
+            '</div>' + buy +
+            '<div class="chapter-list"><h3>' + esc(t("chapters")) + '</h3>' + chapters + '</div>' +
+          '</div>' +
+        '</div>';
+    }
+    document.addEventListener("click", function (e) {
+      var r = e.target.closest("[data-read]");
+      if (r) { var p = r.getAttribute("data-read").split(":"); openReader(p[0], parseInt(p[1], 10)); return; }
+      var l = e.target.closest("[data-listen]");
+      if (l) { var q = l.getAttribute("data-listen").split(":"); playChapter(q[0], parseInt(q[1], 10), true); }
+    });
+
+    /* ================= reader ================= */
+    function bmKey() { return currentBookId + ":" + currentChapter; }
+    function renderReader(resetNote) {
+      var b = bookById(currentBookId); if (!b) return;
+      var ch = b.chapters[currentChapter - 1]; if (!ch) return;
+      $("#rBook").textContent = b.title[lang] + " — " + b.subtitle[lang];
+      $("#rTitle").textContent = ch.title[lang];
+      $("#rCh").textContent = t("chapter") + " " + ch.n + " / " + b.chapters.length;
+      var sheet = $("#readerSheet");
+      sheet.className = "reader-sheet theme-" + readerTheme;
+      sheet.style.fontSize = readerFont + "rem";
+      $("#rParas").innerHTML = ch.paras[lang].map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+      $$(".theme-btn").forEach(function (btn) {
+        btn.classList.toggle("on", btn.getAttribute("data-theme") === readerTheme);
+      });
+      var bm = !!bookmarks[bmKey()];
+      var bmBtn = $("#readerBookmark");
+      bmBtn.setAttribute("aria-pressed", bm ? "true" : "false");
+      bmBtn.querySelector("span").textContent = bm ? t("bookmarked") : t("bookmark");
+      if (resetNote) $("#noteArea").value = notes[bmKey()] || "";
+      $("#prevCh").style.visibility = currentChapter > 1 ? "visible" : "hidden";
+      $("#nextCh").style.visibility = currentChapter < b.chapters.length ? "visible" : "hidden";
+    }
+    $("#fontMinus").addEventListener("click", function () {
+      readerFont = Math.max(0.9, Math.round((readerFont - 0.08) * 100) / 100);
+      $("#readerSheet").style.fontSize = readerFont + "rem";
+    });
+    $("#fontPlus").addEventListener("click", function () {
+      readerFont = Math.min(1.5, Math.round((readerFont + 0.08) * 100) / 100);
+      $("#readerSheet").style.fontSize = readerFont + "rem";
+    });
+    $$(".theme-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () { readerTheme = btn.getAttribute("data-theme"); renderReader(false); });
+    });
+    $("#readerBookmark").addEventListener("click", function () {
+      var k = bmKey();
+      if (bookmarks[k]) delete bookmarks[k]; else bookmarks[k] = true;
+      renderReader(false); renderBookmarks();
+    });
+    $("#noteArea").addEventListener("input", function (e) { notes[bmKey()] = e.target.value; });
+    $("#prevCh").addEventListener("click", function () { if (currentChapter > 1) { currentChapter--; renderReader(true); window.scrollTo({ top: 0 }); } });
+    $("#nextCh").addEventListener("click", function () {
+      var b = bookById(currentBookId);
+      if (b && currentChapter < b.chapters.length) { currentChapter++; renderReader(true); window.scrollTo({ top: 0 }); }
+    });
+    $("#readerListen").addEventListener("click", function () { playChapter(currentBookId, currentChapter, true); });
+
+    /* ================= bookmarks view ================= */
+    function renderBookmarks() {
+      var keys = Object.keys(bookmarks);
+      $("#bmEmpty").style.display = keys.length ? "none" : "block";
+      $("#bmList").innerHTML = keys.map(function (k) {
+        var p = k.split(":"); var b = bookById(p[0]); if (!b) return "";
+        var ch = b.chapters[parseInt(p[1], 10) - 1]; if (!ch) return "";
+        return '<button type="button" class="bm-row" data-read="' + k + '">' +
+          '<span class="ch-num">' + ch.n + '</span>' +
+          '<span class="bm-t"><b>' + esc(b.title[lang]) + ' — ' + esc(ch.title[lang]) + '</b>' +
+          '<span>' + esc(t("chapter")) + ' ' + ch.n + ' · ' + esc(b.subtitle[lang]) + '</span></span>' +
+          '<span style="color:var(--teal);font-weight:600;font-size:.9rem">' + esc(t("openChapter")) + ' →</span></button>';
+      }).join("");
+    }
+
+    /* ================= audio player ================= */
+    function updatePlayerMeta() {
+      if (!track) return;
+      var b = bookById(track.bookId); if (!b) return;
+      var ch = b.chapters[track.ch - 1];
+      $("#pTitle").textContent = b.title[lang] + " — " + ch.title[lang];
+      $("#pSub").textContent = t("chapter") + " " + ch.n + " · " + (lang === "vi" ? "Giọng đọc tiếng Việt" : "English narration");
+      $("#pCover").src = b.cover;
+      $("#pCover").alt = b.title.en;
+    }
+    function playChapter(bookId, ch, autoplay) {
+      var same = track && track.bookId === bookId && track.ch === ch && audio.getAttribute("src") === audioSrc(bookId, ch);
+      track = { bookId: bookId, ch: ch };
+      if (!same) {
+        audio.src = audioSrc(bookId, ch);
+        audio.playbackRate = speeds[speedIdx];
+      }
+      $("#player").classList.add("show");
+      document.body.classList.add("has-player");
+      updatePlayerMeta();
+      if (autoplay) audio.play();
+    }
+    function setPlayIcon() {
+      $("#pPlayIcon").innerHTML = audio.paused
+        ? '<path d="M8 5.5v13l11-6.5z"/>'
+        : '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';
+    }
+    $("#pPlay").addEventListener("click", function () { if (audio.paused) audio.play(); else audio.pause(); });
+    $("#pBack").addEventListener("click", function () { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+    $("#pFwd").addEventListener("click", function () { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 15); });
+    $("#pSpeed").addEventListener("click", function () {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      audio.playbackRate = speeds[speedIdx];
+      $("#pSpeed").textContent = String(speeds[speedIdx]).replace(".", ",") + "×";
+      if (lang === "en") $("#pSpeed").textContent = speeds[speedIdx] + "×";
+    });
+    $("#pClose").addEventListener("click", function () {
+      audio.pause(); audio.removeAttribute("src"); audio.load(); track = null;
+      $("#player").classList.remove("show");
+      document.body.classList.remove("has-player");
+    });
+    $("#pSeek").addEventListener("input", function (e) {
+      if (isFinite(audio.duration) && audio.duration > 0) {
+        audio.currentTime = (parseFloat(e.target.value) / 100) * audio.duration;
+      }
+    });
+    audio.addEventListener("play", setPlayIcon);
+    audio.addEventListener("pause", setPlayIcon);
+    audio.addEventListener("loadedmetadata", function () {
+      $("#pDur").textContent = fmtTime(audio.duration);
+      audio.playbackRate = speeds[speedIdx];
+    });
+    audio.addEventListener("timeupdate", function () {
+      $("#pCur").textContent = fmtTime(audio.currentTime);
+      if (isFinite(audio.duration) && audio.duration > 0) {
+        $("#pSeek").value = (audio.currentTime / audio.duration) * 100;
+      }
+    });
+    audio.addEventListener("ended", function () {
+      if (!track) return;
+      var b = bookById(track.bookId);
+      if (b && track.ch < b.chapters.length) playChapter(track.bookId, track.ch + 1, true);
+    });
+
+    /* ================= init ================= */
+    applyLang();
+    showView("home");
+    </script>
+  </body>
+</html>
